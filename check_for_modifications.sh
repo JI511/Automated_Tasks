@@ -1,9 +1,10 @@
 #!/bin/bash
 # checkout specific repos or update if already exists
 
-cd /home/pi/Desktop/Programs/Personal_Fitness
+cd /home/pi/Desktop/Programs
 if [ -d "/home/pi/Desktop/Programs/Personal_Fitness" ]
 then
+    cd Personal_Fitness/
     pwd
     echo "Directory already exists, updating"
     git pull origin master

@@ -12,7 +12,7 @@ def main(path):
         try:
             file = open(file_path, 'r')
             for line in file.readlines():
-                if 'ERROR' in line or 'FAILURE' in line:
+                if 'ERROR' in line or 'FAIL' in line:
                     msg = EmailMessage()
                     msg.set_content('Unit test failure!')
                     msg['Subject'] = 'Personal_Fitness Repo Test Failure'

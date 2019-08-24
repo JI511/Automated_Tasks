@@ -6,3 +6,4 @@ then
     echo "exist"
 else
     echo "does not exist"
+fi

@@ -6,21 +6,32 @@ import smtplib
 from email.message import EmailMessage
 
 
-def main(path):
-    file_path = str(path)
-    if os.path.exists(file_path) and file_path.endswith('.txt'):
+def main(log_path, pass_path):
+    my_log_path = str(log_path)
+    my_pass_path = str(pass_path)
+    if os.path.exists(my_log_path) and my_log_path.endswith('.txt'):
         try:
-            file = open(file_path, 'r')
+            p_file = open(my_pass_path, 'r')
+            gmail_sender = 'johnspibot@gmail.com'
+            recipient = 'johningwersen11@gmail.com'
+            gmail_pass = p_file.read()
+            file = open(my_log_path, 'r')
             for line in file.readlines():
                 if 'ERROR' in line or 'FAIL' in line:
                     msg = EmailMessage()
                     msg.set_content('Unit test failure!')
                     msg['Subject'] = 'Personal_Fitness Repo Test Failure'
-                    msg['From'] = 'johningwersen11@gmail.com'
-                    msg['To'] = 'johningwersen11@gmail.com'
-                    s = smtplib.SMTP('localhost')
-                    s.send_message(msg)
-                    s.quit()
+                    msg['From'] = gmail_sender
+                    msg['To'] = recipient
+                    server = smtplib.SMTP('smtp.gmail.com', 587)
+                    server.ehlo()
+                    server.starttls()
+                    server.login('johnspibot@gmail.com', gmail_pass)
+                    try:
+                        server.sendmail(gmail_sender, recipient, msg)
+                    except:
+                        pass
+                    server.quit()
                     sys.exit(1)
             sys.exit(0)
         except Exception:
@@ -29,6 +40,7 @@ def main(path):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("path", help='The desired log file to check for unit test results.')
+    parser.add_argument("log_path", help='The desired log file to check for unit test results.')
+    parser.add_argument("pass_path", help='Path to a config.txt file that stores password for gmail.')
     args = parser.parse_args()
-    main(args.path)
+    main(args.log_path, args.pass_path)

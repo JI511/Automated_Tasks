@@ -26,11 +26,12 @@ def main(log_path, pass_path):
                                         'From: %s' % gmail_sender,
                                         'Subject: %s' % subject,
                                         '', msg_body])
-                    server = smtplib.SMTP(host='smtp.gmail.com', port=13268)
+                    server = smtplib.SMTP(host='smtp.gmail.com', port=587)
                     server.ehlo()
                     server.starttls()
                     server.login('johnspibot@gmail.com', gmail_pass)
                     try:
+                        print("Attempting to send email...")
                         server.sendmail(gmail_sender, [recipient], body)
                     except:
                         print("There was an error")

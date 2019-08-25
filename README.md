@@ -6,4 +6,4 @@ First, check_for_modifications.sh is run to determine if my Personal_Fitness rep
 
 Second, all unit tests will be run with unit_test_executor.sh.
 
-Third (not implemented yet), is_failure_notification_needed.sh will use the python script check_log_file.py to determine if the unit test executed without error or failure. If an error or failure occurred, the user will be notified via email.
+Third, is_failure_notification_needed.sh will use the python script check_log_file.py to determine if the unit test executed without error or failure. If an error or failure occurred, the user will be notified via email.

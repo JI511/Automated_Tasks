@@ -13,3 +13,16 @@ else
     echo "Directory does not exists, checking out"
     git clone https://github.com/JI511/Personal_Fitness.git
 fi
+
+cd /home/pi/Desktop/Programs
+if [ -d "/home/pi/Desktop/Programs/NBA_Beautiful_Data" ]
+then
+    cd NBA_Beautiful_Data/
+    pwd
+    echo "Directory already exists, updating"
+    git pull origin master
+else
+    pwd
+    echo "Directory does not exists, checking out"
+    git clone https://github.com/JI511/NBA_Beautiful_Data.git
+fi

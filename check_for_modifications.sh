@@ -26,3 +26,5 @@ else
     echo "Directory does not exists, checking out"
     git clone https://github.com/JI511/NBA_Beautiful_Data.git
 fi
+
+python3 log_date.py

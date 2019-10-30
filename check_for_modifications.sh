@@ -27,4 +27,5 @@ else
     git clone https://github.com/JI511/NBA_Beautiful_Data.git
 fi
 
-python3 log_date.py
+cd /home/pi/Desktop/Programs/Automated_Tasks
+python log_date.py

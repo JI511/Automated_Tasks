@@ -27,5 +27,18 @@ else
     git clone https://github.com/JI511/NBA_Beautiful_Data.git
 fi
 
+cd /home/pi/Desktop/Programs
+if [ -d "/home/pi/Desktop/Programs/Automated_Tasks" ]
+then
+    cd Automated_Tasks/
+    pwd
+    echo "Directory already exists, updating"
+    git pull origin master
+else
+    pwd
+    echo "Directory does not exists, checking out"
+    git clone https://github.com/JI511/Automated_Tasks.git
+fi
+
 cd /home/pi/Desktop/Programs/Automated_Tasks
 python log_date.py
